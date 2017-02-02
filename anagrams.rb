@@ -55,9 +55,32 @@ def second_anagram?(string1, string2)
 end
 
 def third_anagram?(string1, string2)
+  string1.split("").sort == string2.split("").sort
+end
+
+def fourth_anagram?(string1, string2)
+  hash = Hash.new(0)
+  string1.each_char do |char|
+    hash[char] += 1
+  end
+
+  string2.each_char do |char|
+    hash[char] -= 1
+  end
+
+  return true if hash.values.all? {|val| val == 0}
+  false
+
+end
 
 p first_anagram?("gizmo", "sally")    #=> false
 p first_anagram?("elvis", "lives")
 
 p second_anagram?("gizmo", "sally")    #=> false
 p second_anagram?("elvis", "lives")
+
+p third_anagram?("gizmo", "sally")    #=> false
+p third_anagram?("elvis", "lives")
+
+p fourth_anagram?("gizmo", "sally")    #=> false
+p fourth_anagram?("elvis", "lives")

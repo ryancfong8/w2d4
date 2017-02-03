@@ -19,6 +19,17 @@ def okay_two_sum?(array, target)
   false
 end
 
+def two_sum?(array, target)
+  hash1 = Hash.new(0)
+  array.each do |el|
+    hash1[el] = target - el
+  end
+
+  array.each do |el|
+    return true if hash1.has_key?(el) && hash1.has_value?(el)
+  end
+  false
+end
 
 array = [0,1,5,7]
 p bad_two_sum?(array, 6)
@@ -31,3 +42,6 @@ arr = [0, 1, 5, 7, 8, 10, 11]
 
 p okay_two_sum?(arr, 15)
 p okay_two_sum?(arr, 22)
+
+p two_sum?(array, 10)
+p two_sum?(array, 6)
